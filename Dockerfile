@@ -89,7 +89,7 @@ git apply 5071.patch && \
 make
 
 RUN cd xbmc && \
-checkinstall -y --fstrans=no --install=yes --pkgname=sparkly-kodi-headless
+checkinstall -y --fstrans=no --install=yes --pkgname=sparkly-kodi-headless --pkgversion="`date +%Y%m%d`.`git rev-parse --short HEAD`"
 
 ADD startup/movedeb.sh /root/movedeb.sh
 RUN chmod +x /root/movedeb.sh
