@@ -23,6 +23,13 @@ RUN add-apt-repository -s ppa:team-xbmc/ppa
 RUN apt-get update && \
 
 apt-get build-dep kodi -y
+add-apt-repository --remove ppa:team-xbmc/ppa && \
+apt-get purge --remove -y software-properties-common python-software-properties && \
+apt-get autoremove -y && \
+apt-get clean && \
+apt-get update && \
+apt-get install -y libcec2 libcec-dev libltdl-dev libtag1-dev
+
 # Pull kodi source from git and apply any patches
 # Edit this section for branch, configure enables/disables  and patch etc.....
 
@@ -46,7 +53,6 @@ git checkout helix_headless && \
 # Configure, make, clean.
 ./bootstrap && \
 ./configure \
- --disable-cec \
 --prefix=/opt/kodi-server && \
 make
 
