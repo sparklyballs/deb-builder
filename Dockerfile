@@ -46,6 +46,7 @@ git checkout helix_headless && \
 # Configure, make, clean.
 ./bootstrap && \
 ./configure \
+ --disable-cec \
 --prefix=/opt/kodi-server && \
 make
 
