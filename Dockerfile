@@ -28,62 +28,24 @@ apt-get build-dep kodi -y
 
 
 # Main git source
-RUN git clone https://github.com/xbmc/xbmc.git
+RUN git clone https://github.com/topfs2/xbmc.git
 
 # mv patch to xbmc folder
 
 RUN cd xbmc && \
-mv /root/patches/5071.patch . && \
+# mv /root/patches/5071.patch . && \
 
 # checkout branch/tag
 
-git checkout 14.0-Helix && \
+git checkout helix_headless && \
 
 # Apply patch(s)
 
-git apply 5071.patch && \
+# git apply 5071.patch && \
 
 # Configure, make, clean.
 ./bootstrap && \
 ./configure \
---enable-nfs \
---enable-upnp \
---enable-ssh \
---enable-libbluray \
---disable-debug \
---disable-vdpau \
---disable-vaapi \
---disable-crystalhd \
---disable-vdadecoder \
---disable-vtbdecoder \
---disable-openmax \
---disable-joystick \
---disable-rsxs \
---disable-projectm \
---disable-rtmp \
---disable-airplay \
---disable-airtunes \
---disable-dvdcss \
---disable-optical-drive \
---disable-libusb \
---disable-libcec \
---disable-libmp3lame \
---disable-libcap \
---disable-udev \
---disable-libvorbisenc \
---disable-asap-codec \
---disable-afpclient \
---disable-goom \
---disable-fishbmc \
---disable-spectrum \
---disable-waveform \
---disable-avahi \
---disable-non-free \
---disable-texturepacker \
---disable-pulse \
---disable-dbus \
---disable-alsa \
---disable-hal \
 --prefix=/opt/kodi-server && \
 make
 
